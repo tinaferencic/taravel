@@ -4,7 +4,7 @@ import 'plans.dart';
 
 class OverviewScreen extends StatelessWidget {
   final String title;
-   OverviewScreen({Key? key, required this.title}) : super(key: key);
+   const OverviewScreen({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
