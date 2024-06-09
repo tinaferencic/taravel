@@ -209,9 +209,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-  padding: const EdgeInsets.only(left: 20.0), // Adjust the left margin as needed
-  child: const Text(
+                  const Padding(
+  padding: EdgeInsets.only(left: 20.0), // Adjust the left margin as needed
+  child: Text(
     'These recommendations are based on your recent trip history.',
     style: TextStyle(
       fontWeight: FontWeight.w400,
