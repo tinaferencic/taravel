@@ -3,8 +3,53 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login.dart'; 
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+
+class FormContainerWidget extends StatefulWidget {
+
+  final TextEditingController? controller;
+  final Key? fieldKey;
+  final bool? isPasswordField;
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onFieldSubmitted;
+  final TextInputType? inputType;
+
+  const FormContainerWidget({
+    this.controller,
+    this.isPasswordField,
+    this.fieldKey,
+    this.hintText,
+    this.labelText,
+    this.helperText,
+    this.onSaved,
+    this.validator,
+    this.onFieldSubmitted,
+    this.inputType
+  });
+
+}
+
+
+class SignupScreen extends StatefulWidget {
+ SignupScreen({super.key});
+
+
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  bool isSigningUp = false;
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +96,7 @@ class SignupScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
+                  controller: _emailController,
                   'Email',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
@@ -79,6 +125,7 @@ class SignupScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
+                  controller: _passwordController,
                   'Password',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
@@ -254,3 +301,27 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
+
+
+void _signUp() async {
+
+setState(() {
+  isSigningUp = true;
+});
+
+    String username = _usernameController.text;
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signUpWithEmailAndPassword(email, password);
+
+setState(() {
+  isSigningUp = false;
+});
+    if (user != null) {
+      void print("Error");
+      Navigator.pushNamed(context, "/home");
+    } else {
+      void print("Error");
+    }
+  }

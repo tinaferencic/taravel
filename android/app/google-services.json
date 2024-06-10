@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "795236677764",
+    "project_id": "pojele-taravel",
+    "storage_bucket": "pojele-taravel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795236677764:android:6f8cf04dd0360cd788ead1",
+        "android_client_info": {
+          "package_name": "com.example.taravel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAurmUnGUPv0mKFlNAi8jKkHrK28xn0Jzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
